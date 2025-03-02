@@ -6,23 +6,23 @@
     <title>Bird Image Selector</title>
 
     <style>
-        /* Default Light Theme */
+        /* Default Main Theme */
         :root {
-            --primary-color: #ffffff;
-            --secondary-color: #f5f5f5;
-            --bg-color: #e0e0e0;
-            --font-color: #333333;
-            --heading-color: #0077cc;
+            --primary-color: rgb(190, 239, 0);
+            --secondary-color: rgb(255, 0, 40);
+            --bg-color: rgb(101, 122, 0);
+            --font-color: rgb(20, 0, 198);
+            --heading-color: rgb(225, 179, 130);
         }
-
-        /* Dark Theme */
-        [data-theme="dark"] {
-            --primary-color: #222222;
-            --secondary-color: #333333;
-            --bg-color: #111111;
-            --font-color: #f0f0f0;
-            --heading-color: #ffcc00;
+  /* Default Alt Theme */
+  :root {
+            --primary-color: rgb(160, 210, 235);
+            --secondary-color: rgb(229, 234, 245);
+            --bg-color: rgb(208, 189, 244);
+            --font-color: rgb(132, 88, 179);
+            --heading-color: rgb(0, 0, 128);
         }
+       
 
         /* Apply Variables */
         body {
@@ -73,7 +73,7 @@
 
     <main>
         <section id="image-section">
-            <img id="bird-image" src="http://www.outgrabe.net/bird00.jpg" alt="Pardalote">
+            <img id="bird-image" src="http://www.outgrabe.net/bird02.jpg" alt="White-headed Stilt">
             <p id="image-caption">Pardalote by fir0002 (CC-by-NC)</p>
            
             <button onclick="changeImage(0)">Pardalote</button>

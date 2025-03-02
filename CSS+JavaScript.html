@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Image Selector</title>
+
+    <style>
+        /* Default Light Theme */
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #f5f5f5;
+            --bg-color: #e0e0e0;
+            --font-color: #333333;
+            --heading-color: #0077cc;
+        }
+
+        /* Dark Theme */
+        [data-theme="dark"] {
+            --primary-color: #222222;
+            --secondary-color: #333333;
+            --bg-color: #111111;
+            --font-color: #f0f0f0;
+            --heading-color: #ffcc00;
+        }
+
+        /* Apply Variables */
+        body {
+            background-color: var(--bg-color);
+            color: var(--font-color);
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: var(--heading-color);
+        }
+
+        /* Image and Caption */
+        #image-section img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        #image-caption {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        button {
+            background-color: var(--primary-color);
+            color: var(--font-color);
+            border: 1px solid var(--heading-color);
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bird Image Selector</h1>
+    </header>
+
+    <main>
+        <section id="image-section">
+            <img id="bird-image" src="http://www.outgrabe.net/bird00.jpg" alt="Pardalote">
+            <p id="image-caption">Pardalote by fir0002 (CC-by-NC)</p>
+           
+            <button onclick="changeImage(0)">Pardalote</button>
+            <button onclick="changeImage(1)">Purple Swamp Hen</button>
+            <button onclick="changeImage(2)">White-headed Stilt</button>
+            <button onclick="changeImage(3)">Inland Thornbill</button>
+            <button onclick="changeImage(4)">Rose Robin</button>
+        </section>
+    </main>
+
+    <button id="theme-toggle">Toggle Theme</button>
+
+    <script>
+        // Array of bird images and captions
+        const images = [
+            { url: "http://www.outgrabe.net/bird00.jpg", caption: "Pardalote by fir0002 (CC-by-NC)" },
+            { url: "http://www.outgrabe.net/bird01.jpg", caption: "Purple Swamp Hen by Toby Hudson (CC-by-SA)" },
+            { url: "http://www.outgrabe.net/bird02.jpg", caption: "White-headed Stilt by JJ Harrison (CC-by-SA)" },
+            { url: "http://www.outgrabe.net/bird03.jpg", caption: "Inland Thornbill by Peter Jacobs (CC-by-SA)" },
+            { url: "http://www.outgrabe.net/bird04.jpg", caption: "Rose Robin by JJ Harrison (CC-by-SA)" }
+        ];
+
+        // Function to change image and caption
+        function changeImage(index) {
+            document.getElementById("bird-image").src = images[index].url;
+            document.getElementById("image-caption").textContent = images[index].caption;
+        }
+
+        // Theme Toggle Button
+        document.getElementById("theme-toggle").addEventListener("click", function () {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme); // Save user preference
+        });
+
+        // Load stored theme on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedTheme = localStorage.getItem("theme") || "light";
+            document.documentElement.setAttribute("data-theme", savedTheme);
+        });
+    </script>
+
+</body>
+</html>
